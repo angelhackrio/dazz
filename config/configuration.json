@@ -1,0 +1,20 @@
+{
+  "we": {
+    "config": {
+      "passport": {
+        "strategies": {
+          "jwt": {
+            "secretOrKey": "143rwerwe1312313adadasda"
+          }
+        }
+      }
+    }
+  },
+  "passport": {
+    "strategies": {
+      "jwt": {
+        "secretOrKey": "143rwerwe1312313adadasda"
+      }
+    }
+  }
+}
