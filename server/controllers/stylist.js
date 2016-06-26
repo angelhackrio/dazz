@@ -2,6 +2,8 @@ var path = require('path');
 
 module.exports = {
   getPage: function getPage (req, res) {
+    if (!req.isAuthenticated()) return res.goTo('/login');
+
     if (req.body.question) {
       res.locals.questionSend = req.body.question;
 

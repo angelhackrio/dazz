@@ -12,10 +12,10 @@
   "options": {
     "termFields": {
       "categoria": {
-        "vocabularyName": "ategory",
+        "vocabularyName": "Category",
         "canCreate": true,
-        "formFieldMultiple": false,
-        "onlyLowercase": false
+        "formFieldMultiple": true,
+        "onlyLowercase": true
       }
     },
     "imageFields": {

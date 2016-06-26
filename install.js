@@ -40,9 +40,51 @@ module.exports = {
       }).catch(done);
     });
 
-    fns.push(function createClass (done) {
-      we.plugins['project'].createClassifier(we, done);
-    });
+    fns.push(function (done) {
+      var cloths = [
+        {
+          name: 'Another day another off-sholder',
+          categoria: [
+            'azul', 'saia', 'branca', 'sandalha', 'saia curta', 'passear', 'parque'
+          ]
+        },
+        {
+          name: 'Body chain everyday wear',
+          categoria: [
+            'jeans', 'saia', 'azul', 'sapato', 'camiseta', 'preta', 'compras'
+          ]
+        },
+        {
+          name: 'Brick garden',
+          categoria: [
+            'marrom', 'saia', 'bustie', 'preto', 'preta', 'noitada', 'noite'
+          ]
+        },
+        {
+          name: 'Drake over',
+          categoria: [
+            'camisa', 'vermelha', 'saia', 'azul', 'sapato', 'ir', 'shopping'
+          ]
+        },
+        {
+          name: 'Human being',
+          categoria: [
+            'camisa', 'azul', 'calça', 'azul', 'sapato', 'vermelho', 'sair', 'amigas'
+          ]
+        },
+        {
+          name: 'Making statement shoes pop',
+          categoria: [
+            'skine', 'strat', 'preta', 'preto', 'sandalha', 'rosa', 'camiseta', 'preta',
+            'balada', 'noitada', 'noite'
+          ]
+        }                
+      ];
+
+      we.utils.async.eachSeries(cloths, function (c, next) {
+        we.db.models.cloth.create(c).nodeify(next);   
+      }, done)
+    })
 
     we.utils.async.series(fns, done);
   }

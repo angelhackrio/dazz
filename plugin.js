@@ -32,14 +32,9 @@ module.exports = function loadPlugin (projectPath, Plugin) {
 
       we.log.info('Watson response:', response);
 
-  	  we.db.models.classifier.create(response || response.success)
-  	  .then(function (r) {
+      var data = 'module.exports.watsonClassifier = ' + JSON.stringify(response);
 
-  	    we.log.info('new classifier:', r.id, r.classifier_id);
-
-  	    done();	
-  	  })
-  	  .catch(done);
+      fs.writeFile( path.resolve('./config/watsonClassifier.js'), data , done)
     }); 
   }
 
@@ -57,7 +52,7 @@ module.exports = function loadPlugin (projectPath, Plugin) {
   plugin.question = function question (we, text, done) {
     plugin.nlc.classify({
       text: text,
-      classifier_id: plugin.watsonClassifier.classifier_id
+      classifier_id: we.config.watsonClassifier.classifier_id
     }, function (err, response) {
       if (err) return done(err);
 
@@ -66,8 +61,6 @@ module.exports = function loadPlugin (projectPath, Plugin) {
       done();
     });
   }
-
-  plugin.hooks.on('we:server:before:start', plugin.preloadClassifier);
 
   return plugin;
 };
