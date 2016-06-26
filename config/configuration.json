@@ -28,8 +28,10 @@
   },
   "themes": {
     "enabled": [
-      "we-theme-dazz"
+      "we-theme-dazz",
+      "we-theme-admin-default"
     ],
-    "app": "we-theme-dazz"
+    "app": "we-theme-dazz",
+    "admin": "we-theme-admin-default"
   }
 }
