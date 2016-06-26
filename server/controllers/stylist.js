@@ -5,8 +5,14 @@ module.exports = {
     if (req.body.question) {
       res.locals.questionSend = req.body.question;
 
-      question();
-    } 
+      return req.we.plugins['project'].question(req.we, req.body.question, function(err, result){
+        if (err) return res.queryError(err);
+        
+        console.log('rrr>', result);
+
+        res.ok();
+      });
+    }
 
     if (req.method == 'post' && !req.question) {
       res.addMessage('warn', 'dazz.page.question.is.required');
@@ -14,17 +20,4 @@ module.exports = {
 
     res.ok();
   }
-}
-
-function question () {
-  natural_language_classifier.classify({
-    text: 'Is it sunny?',
-    classifier_id: '<classifier-id>' },
-    function(err, response) {
-      if (err) {
-         console.log('error:', err);
-      } else {
-        console.log('sucesso', JSON.stringify(response, null, 2));
-      }
-  });
 }
