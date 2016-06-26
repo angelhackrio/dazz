@@ -10,6 +10,10 @@ module.exports = {
 
     var fns = [];
 
+    //
+    // - Create first user
+    //  
+
     fns.push(function registerUser1 (done) {
       var user1 = {
         username: 'Alberto',
@@ -39,6 +43,10 @@ module.exports = {
         })
       }).catch(done);
     });
+
+    //
+    // -- Create example cloths
+    //
 
     fns.push(function (done) {
       var cloths = [
