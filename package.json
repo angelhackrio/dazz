@@ -1,6 +1,6 @@
 {
-  "name": "we-project-rsfashion",
-  "description": "tel something about your module here",
+  "name": "dazz",
+  "description": "Atravez da inteligencia artificial de forma simples e eficaz buscar looks para diversas situações do dia a dia.",
   "version": "1.0.0",
   "private": true,
   "main": "./app.js",
