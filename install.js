@@ -10,13 +10,12 @@ module.exports = {
 
     var fns = [];
 
-
-    fns.push(function registerUser1(done) {
+    fns.push(function registerUser1 (done) {
       var user1 = {
-        username: '',
-        email: '',
-        password: '', // change after install
-        displayName: '',
+        username: 'Alberto',
+        email: 'contato@albertosouza.net',
+        password: '123', // change after install
+        displayName: 'Alberto Souza',
         active: true,
         roles: ['administrator']
       };
@@ -26,21 +25,24 @@ module.exports = {
       we.db.models.user.create(user1)
       .then(function (user) {
         we.log.info('New User with id: ', user.id);
-        
-        if (!we.db.models.password) return done();
-        
         // set the password
         we.db.models.password.create({
           userId: user.id,
           password: user1.password,
           confirmPassword: user1.password
-        }).then(function () {
+        })
+        .then(function () {
+
+          console.log('passport created');
+
           return done();
-        }).catch(done);
-      });
+        })
+      }).catch(done);
     });
 
-
+    fns.push(function createClass (done) {
+      we.plugins['project'].createClassifier(we, done);
+    });
 
     we.utils.async.series(fns, done);
   }

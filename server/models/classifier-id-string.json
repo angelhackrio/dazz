@@ -1,0 +1,27 @@
+{
+  "attributes": {
+    "name": {
+      "type": "STRING"
+    },
+    "language": {
+      "type": "STRING"
+    },
+    "url": {
+      "type": "TEXT"
+    },
+    "status": {
+      "type": "STRING"
+    },
+    "status_description": {
+      "type": "TEXT"
+    }
+    
+  },
+  "associations": {
+    
+  },
+  "hooks": {
+    "afterCreate": []
+  }
+}
+

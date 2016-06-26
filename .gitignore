@@ -31,6 +31,8 @@ node_modules
 client/bower_components
 bower_components
 
+!node_modules/we-theme-dazz
+
 # Debug log from npm
 npm-debug.log
 

@@ -1,20 +1,29 @@
 {
-  "we": {
-    "config": {
-      "passport": {
-        "strategies": {
-          "jwt": {
-            "secretOrKey": "143rwerwe1312313adadasda"
-          }
-        }
-      }
+  "roles": {
+    "administrator": {
+      "name": "administrator",
+      "permissions": []
+    },
+    "authenticated": {
+      "name": "authenticated",
+      "permissions": [],
+      "isSystemRole": true
+    },
+    "unAuthenticated": {
+      "name": "unAuthenticated",
+      "permissions": [],
+      "isSystemRole": true
+    },
+    "owner": {
+      "name": "owner",
+      "permissions": [],
+      "isSystemRole": true
     }
   },
-  "passport": {
-    "strategies": {
-      "jwt": {
-        "secretOrKey": "143rwerwe1312313adadasda"
-      }
-    }
+  "themes": {
+    "enabled": [
+      "we-theme-dazz"
+    ],
+    "app": "we-theme-dazz"
   }
 }
