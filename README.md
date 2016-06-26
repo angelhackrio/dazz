@@ -23,7 +23,7 @@ Participantes:
 - João Pedro
 - Danilo Neves de Martins
 - Giovane Martins
-- Renan
+- Renan Henrique
 
 
 ## How to install
