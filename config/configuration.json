@@ -7,14 +7,16 @@
     "authenticated": {
       "name": "authenticated",
       "permissions": [
-        "find_cloth"
+        "find_cloth",
+        "find_image"
       ],
       "isSystemRole": true
     },
     "unAuthenticated": {
       "name": "unAuthenticated",
       "permissions": [
-        "find_cloth"
+        "find_cloth",
+        "find_image"
       ],
       "isSystemRole": true
     },
