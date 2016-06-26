@@ -53,13 +53,7 @@ module.exports = function loadPlugin (projectPath, Plugin) {
     plugin.nlc.classify({
       text: text,
       classifier_id: we.config.watsonClassifier.classifier_id
-    }, function (err, response) {
-      if (err) return done(err);
-
-      console.log('sucesso', JSON.stringify(response, null, 2));
-
-      done();
-    });
+    }, done);
   }
 
   return plugin;

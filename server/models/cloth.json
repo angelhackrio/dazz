@@ -6,9 +6,7 @@
     "description": {
       "type": "TEXT"
     }
-    
   },
-  "associations": {},
   "options": {
     "termFields": {
       "categoria": {

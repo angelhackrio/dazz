@@ -9,10 +9,39 @@ module.exports = {
 
       return req.we.plugins['project'].question(req.we, req.body.question, function(err, result){
         if (err) return res.queryError(err);
-        
-        console.log('rrr>', result);
 
-        res.ok();
+        var tags = []
+
+        for (var i = 0; i < result.classes.length; i++) {
+          if (result.classes[i].confidence > 0.6) {
+            tags.push(result.classes[i].class_name);
+          }
+
+          if (i >= 1) {
+            // get only 2 tags
+            break;
+          }
+        };
+        
+        if (!tags) {
+          return res.ok();
+        }
+
+        var sql = "SELECT cloths.id, cloths.name, cloths.description, cloths.createdAt, cloths.updatedAt FROM cloths"+
+          " INNER JOIN modelsterms as mt ON mt.modelId=cloths.id"+
+          " INNER JOIN terms as t ON t.id=mt.termId"+
+          " WHERE t.text in (" + tags.map(function (t) {
+            return "'"+String(t)+"'";
+          }).join(', ') + ")";
+
+        req.we.db.defaultConnection.query(sql)
+        .spread(function (r) {
+
+          res.locals.cards = r;
+          res.ok();
+        
+        })
+        .catch(res.queryError)
       });
     }
 
@@ -23,3 +52,54 @@ module.exports = {
     res.ok();
   }
 }
+
+/*
+sucesso {
+  "classifier_id": "2374f9x68-nlc-7279",
+  "url": "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/2374f9x68-nlc-7279",
+  "text": "Andar no parque",
+  "top_class": "saia",
+  "classes": [
+    {
+      "class_name": "saia",
+      "confidence": 0.9256668425204913
+    },
+    {
+      "class_name": "preta",
+      "confidence": 0.022112439154127115
+    },
+    {
+      "class_name": "sandalha",
+      "confidence": 0.008697902825709569
+    },
+    {
+      "class_name": "azul",
+      "confidence": 0.004871402537788326
+    },
+    {
+      "class_name": "preto",
+      "confidence": 0.004571711335697853
+    },
+    {
+      "class_name": "sapato",
+      "confidence": 0.0037441061613237205
+    },
+    {
+      "class_name": "noite",
+      "confidence": 0.0034212829091080916
+    },
+    {
+      "class_name": "camiseta",
+      "confidence": 0.003388432699735885
+    },
+    {
+      "class_name": "noitada",
+      "confidence": 0.0032835806297163753
+    },
+    {
+      "class_name": "branca",
+      "confidence": 0.002757583962831398
+    }
+  ]
+}
+*/
