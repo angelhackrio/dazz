@@ -10,36 +10,47 @@ module.exports = {
       return req.we.plugins['project'].question(req.we, req.body.question, function(err, result){
         if (err) return res.queryError(err);
 
+        // console.log('<>', result);
+
         var tags = []
 
         for (var i = 0; i < result.classes.length; i++) {
-          if (result.classes[i].confidence > 0.6) {
-            tags.push(result.classes[i].class_name);
-          }
+          tags.push(result.classes[i].class_name);
 
           if (i >= 1) {
             // get only 2 tags
             break;
           }
         };
-        
-        if (!tags) {
+
+        if (!tags || !tags.length) {
           return res.ok();
         }
 
-        var sql = "SELECT cloths.id, cloths.name, cloths.description, cloths.createdAt, cloths.updatedAt FROM cloths"+
+        var sql = "SELECT cloths.id FROM cloths"+
           " INNER JOIN modelsterms as mt ON mt.modelId=cloths.id"+
           " INNER JOIN terms as t ON t.id=mt.termId"+
           " WHERE t.text in (" + tags.map(function (t) {
             return "'"+String(t)+"'";
           }).join(', ') + ")";
 
-        req.we.db.defaultConnection.query(sql)
+        req.we.db.defaultConnection.query(sql, {
+          logging: req.we.log.info
+        })
         .spread(function (r) {
+          if (!r) return res.ok();
 
-          res.locals.cards = r;
-          res.ok();
-        
+          var ids = r.map(function(c){
+            return c.id
+          });
+
+          return req.we.db.models.cloth.findAll({
+            where: { id: ids }
+          })
+          .then(function(r){
+            res.locals.cards = r;
+            res.ok();
+          })
         })
         .catch(res.queryError)
       });

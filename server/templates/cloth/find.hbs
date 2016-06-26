@@ -5,6 +5,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Name</th>
       <th>{{t 'actions'}}</th>
     </tr>
   </thead>
@@ -13,6 +14,7 @@
 {{#each data}}
   <tr>
     <td>{{id}}</td>
+    <td>{{name}}</td>
     <td>
       {{we-action-view-btn ../resourceName this ../req id}}
       {{we-action-edit-btn ../resourceName this ../req id}}
