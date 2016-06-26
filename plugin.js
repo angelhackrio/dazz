@@ -59,11 +59,11 @@ module.exports = function loadPlugin (projectPath, Plugin) {
       text: text,
       classifier_id: plugin.watsonClassifier.classifier_id
     }, function (err, response) {
-        if (err) return done(err);
+      if (err) return done(err);
 
-        console.log('sucesso', JSON.stringify(response, null, 2));
+      console.log('sucesso', JSON.stringify(response, null, 2));
 
-        done();
+      done();
     });
   }
 
