@@ -1,0 +1,11 @@
+<div class="container"><div class="row">
+  <div class="col-md-12">{{we-breadcrumb locals=this}}</div>
+  {{#region 'sidebar' class="col col-md-4"}}{{/region}}
+  <div class="col col-md-8">
+    <div id="sysMessagesArea">{{{we-messages}}}</div>
+
+    <div id="content">{{{body}}}</div>
+
+    {{#region 'afterContent'}}{{/region}}
+  </div>
+</div></div>

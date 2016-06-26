@@ -6,12 +6,16 @@
     },
     "authenticated": {
       "name": "authenticated",
-      "permissions": [],
+      "permissions": [
+        "find_cloth"
+      ],
       "isSystemRole": true
     },
     "unAuthenticated": {
       "name": "unAuthenticated",
-      "permissions": [],
+      "permissions": [
+        "find_cloth"
+      ],
       "isSystemRole": true
     },
     "owner": {

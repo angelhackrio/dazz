@@ -1,0 +1,29 @@
+{
+  "attributes": {
+    "name": {
+      "type": "STRING"
+    },
+    "description": {
+      "type": "TEXT"
+    }
+    
+  },
+  "associations": {},
+  "options": {
+    "termFields": {
+      "categoria": {
+        "vocabularyName": "ategory",
+        "canCreate": true,
+        "formFieldMultiple": false,
+        "onlyLowercase": false
+      }
+    },
+    "imageFields": {
+      "picture": { "formFieldMultiple": false }
+    }
+  },
+  "hooks": {
+    "afterCreate": []
+  }
+}
+
