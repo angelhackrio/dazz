@@ -1,3 +1,3 @@
-module.exprots.acl = {
+module.exports.acl = {
   disabled: false
 };
