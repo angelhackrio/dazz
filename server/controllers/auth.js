@@ -12,7 +12,7 @@ module.exports = {
   /**
    * Signup action for POST and GET methods
    */
-  signup: function Register(req, res) {
+  signup: function Register (req, res) {
     var we = req.we;
     // check allowRegister flag how block signup
     if (!we.config.auth.allowRegister) return res.forbidden();
@@ -31,7 +31,7 @@ module.exports = {
     res.locals.data = req.body;
 
     we.utils.async.series([
-      function checkIfIsSpam(cb) {
+      function checkIfIsSpam (cb) {
         we.antiSpam.recaptcha.verify(req, res, function (err, isSpam) {
           if (err) return cb(err);
           if (isSpam) {

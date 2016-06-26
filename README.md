@@ -1,25 +1,24 @@
-# We.js we-project-rsfashion project
+# Dazz 
 
-[write something about yout project here]
-
-**Build With:**
-
-- We.js
+Inteligência artificial para indicar os melhores looks para o dia a dia.
 
 ## How to install
 
 1. Clone this project
-2. Create one database for this project
+2. Create one database in mysql or postgresql for this project
 2. Enter in project folder
 3. Copy config/local.example to config/local.js
 4. Configure you database params
 5. install npm packages:
+
 ```sh
 npm install
 ```
+
 6. start with:
+
 ```sh
-we go
+we run
 ```
 
 See http://wejs.org for we.js documentation
@@ -29,6 +28,10 @@ See http://wejs.org for we.js documentation
 ```
 we test
 ```
+
+**Build With:**
+
+- We.js
 
 ## License
 

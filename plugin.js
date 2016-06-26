@@ -1,5 +1,5 @@
 /**
- * We.js plugin file, use to load routes and configs
+ * We.js plugin file, main project file
  */
 var watson = require('watson-developer-cloud'),
   fs = require('fs'),
@@ -15,6 +15,9 @@ module.exports = function loadPlugin (projectPath, Plugin) {
     version: 'v1'
   });
 
+  /**
+   * Create one classifier abd save in configurations
+   */
   plugin.createClassifier = function createClassifier (we, done) {
 
   	var params = {
@@ -27,13 +30,15 @@ module.exports = function loadPlugin (projectPath, Plugin) {
   	  if (err) return done(err);
 
       we.log.info('Watson response:', response);
-
       var data = 'module.exports.watsonClassifier = ' + JSON.stringify(response);
 
       fs.writeFile( path.resolve('./config/watsonClassifier.js'), data , done)
     }); 
   }
 
+  /**
+   * Preload one classifier
+   */
   plugin.preloadClassifier = function preloadClassifier (we, next) {
     we.db.models.classifier.findOne({
       where: { name: 'roupas' }
@@ -45,6 +50,9 @@ module.exports = function loadPlugin (projectPath, Plugin) {
     .catch(next)
   }
 
+  /**
+   * Execute one question in watson natural language
+   */
   plugin.question = function question (we, text, done) {
     plugin.nlc.classify({
       text: text,

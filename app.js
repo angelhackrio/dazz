@@ -1,5 +1,6 @@
 /**
  * Main app file, load we-core and start the app
+ * Features are added in app.js file
  */
 
 var We = require('we-core');

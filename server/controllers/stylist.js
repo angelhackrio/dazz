@@ -15,12 +15,14 @@ module.exports = {
         var tags = []
 
         for (var i = 0; i < result.classes.length; i++) {
-          tags.push(result.classes[i].class_name);
+          if (result.classes[i].confidence > 0.5) {
+            tags.push(result.classes[i].class_name);
 
-          if (i >= 1) {
-            // get only 2 tags
-            break;
-          }
+            if (i >= 1) {
+              // get only 2 tags
+              break;
+            }            
+          } 
         };
 
         if (!tags || !tags.length) {
