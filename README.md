@@ -10,7 +10,7 @@ Categoria: SaaS
 
 Público-alvo: Adultos e adolescentes.
 
-**Proposta de valor única:** Atravez da inteligencia artificial de forma simples e eficaz buscar looks para diversas situações do dia a dia.
+***Proposta de valor única:*** Atravez da inteligencia artificial de forma simples e eficaz buscar looks para diversas situações do dia a dia.
 
 Desafio:
 
